@@ -3,38 +3,210 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Computer Parts, Laptop Computers, & Electronics</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <script defer src="https://pro.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-RLPiEwcAdrH2NjFcwJipJtlFoIN1xvqPYeeDX5yYtSNu+HTIkQCDvPQ9thsUnPUS" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <div class="banner container-fluid d-none d-lg-block bg-primary">
+        <div class="row">
+            <div class="col d-inline-flex justify-content-between align-items-center">
+                <label>Announcements: <span>Memory Express Saskatoon - Now Open!</span></label>
+                <span class="fa-layers fa-fw fa-lg">
+                    <i class="fas fa-bell"></i>
+                    <span class="fa-layers-counter">4</span>
+                </span>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <div class="col-lg-auto">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-cog"></i>System Configurator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-star-exclamation"></i>New Arrivals</a>
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+    <div class="navigation container-fluid p-0 bg-me-black sticky-top">
+        <nav class="navbar navbar-dark navbar-expand-lg flex-wrap justify-content-lg-start pb-lg-3 pl-0 pr-0">
+            <div class="row flex-grow-1 w-100 m-0 mb-lg-2">
+                <div class="col-3 col-lg flex-lg-grow-0">
+                    <a class="navbar-brand d-none d-lg-block mr-0" href="/"><img src="~/Content/Images/MX-Logo.png" /></a>
+                    <a class="navbar-brand d-lg-none mr-0" href="/"><img class="w-100" src="~/Content/Images/MX-Logo-NoText-Rectangular.png" /></a>
+                </div>
+
+                <div class="col-9 d-lg-none text-right">
+                    <ul class="navigation__icons nav d-inline-flex">
+                        <li class="nav-item">
+                            <i class="fas fa-user fa-fw fa-2x"></i>
+                        </li>
+                        <li class="nav-item">
+                            <span class="fa-layers fa-fw fa-2x">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="fa-layers-counter">2</span>
+                            </span>
+                        </li>
+                        <li class="nav-item">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-lg-7 text-left">
+                    <div class="navigation__search container mt-2 mb-2 ml-0 mr-0 p-0 flex-wrap">
+                        <p class="d-none d-lg-block">
+                            $8.99 Flat Rate Shipping in Canada on Orders under 20 lbs. *<br />
+                            <small>* Only available for standard ground shipping and is not available in the northern territories</small>
+                        </p>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Product Search" aria-label="Product Search" aria-describedby="searchButton" />
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 d-none d-lg-block align-self-end">
+                    <div class="navigation__account container-fluid mb-3 p-0">
+                        <div class="row justify-content-end">
+                            <div class="col-9 text-right">
+                                <p>Welcome Byron Anthony!</p>
+                                <button type="button" class="account__dropdown">
+                                    <big>My Account <i class="fas fa-caret-down"></i></big>
+                                </button>
+                            </div>
+                            <div class="col-3 text-right">
+                                <span class="fa-layers fa-fw fa-2x">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span class="fa-layers-counter">2</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation__items row flex-grow-1 m-0 d-none d-lg-flex">
+                <div class="col-2">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false">
+                            Departments
+                        </button>
+                    </div>
+                </div>
+                <div class="col-auto align-self-center">
+                    <a href="#"><i class="fas fa-globe fa-fw fa-lg"></i> Store Locations</a>
+                </div>
+                <div class="col-auto align-self-center">
+                    <a href="#"><i class="fas fa-phone fa-fw fa-lg"></i> Contact Us</a>
+                </div>
+                <div class="col-auto align-self-center">
+                    <a href="#"><i class="fas fa-wrench fa-fw fa-lg"></i> Tech Zone</a>
+                </div>
+                <div class="col-auto align-self-center">
+                    <a href="#"><i class="fas fa-building fa-fw fa-lg"></i> Corporate Sales</a>
+                </div>
+            </div>
+
+            @*<div class="collapse navbar-collapse" id="navbarToggler">
+                    <a>Test link</a>
+                </div>*@
+        </nav>
+    </div>
+
+    @*<div class="navbar navbar-dark bg-dark">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="body-content container-fluid p-0">
+
+        <div class="body-content__dynamic container-fluid">
+            @RenderBody()
+        </div>
+
+        <footer class="container-fluid bg-me-black">
+            <div class="container-fluid pt-0 pb-0">
+                <div class="footer__info row mb-3">
+                    <div class="col-12 col-lg order-lg-12 mb-3 mb-lg-0">
+                        <h5>Stay Connected</h5>
+                        <p>Sign up for our promotional newsletter</p>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-sm" aria-describedby="newsletter-name" placeholder="Name" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-sm" aria-describedby="newsletter-email" placeholder="Email" />
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm w-100">Sign Up</button>
+                        </form>
+                    </div>
+                    <div class="col-12 col-lg mb-3 mb-lg-0">
+                        <label>Information</label>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">About <b>memory</b>express</a></li>
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">Careers</a></li>
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg mb-3 mb-lg-0">
+                        <label>Policies & Procedures</label>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">Returns & Exchanges</a></li>
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">Security & Policy</a></li>
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">Site Terms of Use</a></li>
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">Price Protection</a></li>
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">Warranties</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg">
+                        <label>Tools & Resources</label>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">System Configurator</a></li>
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">Clearance Center</a></li>
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">Rebate Center</a></li>
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">New Arrivals</a></li>
+                            <li class="list-group-item p-0 bg-transparent border-0"><a href="#">Useful Links</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__terms-of-use row">
+                    <div class="col">
+                        <small>
+                            Memory Express is not responsible for misprints or errors on product prices or information.
+                            For more information please see our <a href="#">Site Terms of Use</a>.
+                            &copy;1996-@DateTime.Now.Year Memory Express, Inc. All Rights Reserved. - <span title="4.5.199.240 - 593199ce113e8533459891e6d2a0116ac6f845fd">W03</span>
+                        </small>
+                    </div>
+                </div>
+            </div>
         </footer>
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")

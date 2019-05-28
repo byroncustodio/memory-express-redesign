@@ -3,15 +3,13 @@
 @import "bootstrap/bootstrap.scss";
 @import "bootstrap/bootstrap-grid.scss";
 
+@import "fontawesome";
+
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,9 +19,181 @@ body {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.banner {
+    & > .row {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        & > *:first-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.33);
+        }
+    }
+
+    & label {
+        margin: 0;
+        padding: 0.5rem 0;
+        color: white;
+    }
+
+    .fa-layers {
+        cursor: pointer;
+    }
+
+    & .nav {
+        & > .nav-item:first-child {
+            & > .nav-link {
+                padding-left: 0;
+            }
+        }
+
+        & > .nav-item:last-child {
+            & > .nav-link {
+                padding-right: 0;
+            }
+        }
+
+        & .nav-link {
+            color: white;
+
+            & > svg {
+                margin-right: $spacer * 0.5;
+            }
+        }
+    }
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    & .nav {
+        & > *:not(:last-child) {
+            margin-right: $spacer;
+        }
+
+        & > *:last-child {
+            margin-left: $spacer * .5;
+        }
+
+        & > .nav-item {
+            & > svg[class*='fa-'],
+            & > span[class*='fa-'] {
+                margin-top: $spacer * .25;
+            }
+        }
+    }
+}
+
+.navigation__search {
+    max-width: 600px;
+    margin-bottom: 0;
+
+    & > p {
+        margin-bottom: $spacer * 0.5;
+        color: $gray-500;
+        line-height: $spacer;
+    }
+}
+
+.navigation__account {
+    & p {
+        margin: 0;
+        color: white;
+        line-height: $spacer;
+    }
+
+    & .account__dropdown {
+        padding: 0;
+        background-color: transparent;
+        border: none;
+
+        & big {
+            color: $me-green;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+    & .fa-layers {
+        cursor: pointer;
+    }
+}
+
+.navigation__items {
+}
+
+.body-content {
+    & > .body-content__dynamic {
+        max-width: 1200px;
+    }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    max-width: 75px;
+
+    &:hover {
+        background-color: rgba(black, .25);
+    }
+}
+
+footer {
+    padding: $spacer 0;
+
+    & > .container-fluid {
+        max-width: 1200px;
+
+        & .footer__info {
+            & > * {
+                text-align: center;
+            }
+
+            & > *:first-child {
+                & h5 {
+                    margin: 0;
+                    color: $me-green;
+                }
+
+                & p {
+                    color: white;
+                    font-size: $spacer * .9;
+                }
+            }
+
+            & label {
+                margin-bottom: 0;
+                color: $gray-500;
+                text-align: center;
+            }
+
+            & li {
+                font-size: $spacer * .9;
+            }
+
+            @include media-breakpoint-up(lg) {
+                & > * {
+                    text-align: left;
+                }
+
+                & > *:first-child {
+                    border-left: 1px solid $gray-700;
+                }
+            }
+        }
+
+        & .footer__terms-of-use {
+            text-align: center;
+
+            & small {
+                color: $gray-500;
+                font-size: $spacer * .75;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        & > .container-fluid {
+            padding: 0;
+        }
+    }
 }

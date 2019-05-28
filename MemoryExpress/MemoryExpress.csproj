@@ -206,6 +206,16 @@
     <Content Include="Content\bootstrap\bootstrap.min.css">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
+    <Content Include="Content\Images\Asus-B450X470_Banner1020.jpg" />
+    <Content Include="Content\Images\Banner245-Clearance.svg" />
+    <Content Include="Content\Images\Banner245-FREEShipping.svg" />
+    <Content Include="Content\Images\Banner245-LastCall.svg" />
+    <Content Include="Content\Images\Banner245-SystemConfigurator.svg" />
+    <Content Include="Content\Images\Logitech-G502Lightspeed_Banner1020.jpg" />
+    <Content Include="Content\Images\MESaskaton-NowOpen_Banner.png" />
+    <Content Include="Content\Images\MX-Logo-NoText-Rectangular.png" />
+    <Content Include="Content\Images\MX-Logo.png" />
+    <Content Include="Content\Images\Nvidia-RTXFramesWinGames_Banner.jpg" />
     <Content Include="Content\site.css">
       <DependentUpon>site.scss</DependentUpon>
     </Content>
@@ -325,6 +335,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\_fontawesome.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

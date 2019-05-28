@@ -1,1 +1,6 @@
-﻿
+﻿// Color system
+
+$me-green: #50b948 !default;
+$me-black: #333333 !default;
+
+$theme-colors: ( "primary": $me-green, "me-black": $me-black );
