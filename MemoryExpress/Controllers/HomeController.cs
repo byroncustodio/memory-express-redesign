@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MemoryExpress.Controllers
+namespace MemoryExpress.Web.Controllers
 {
     public class HomeController : Controller
     {

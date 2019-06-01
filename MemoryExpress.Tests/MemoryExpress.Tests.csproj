@@ -99,9 +99,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MemoryExpress\MemoryExpress.csproj">
+    <ProjectReference Include="..\MemoryExpress\MemoryExpress.Web.csproj">
       <Project>{4C4AB0A0-91A1-4DA3-82CB-99EF646B93E8}</Project>
-      <Name>MemoryExpress</Name>
+      <Name>MemoryExpress.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MemoryExpress;
-using MemoryExpress.Controllers;
+using MemoryExpress.Web;
+using MemoryExpress.Web.Controllers;
 
 namespace MemoryExpress.Tests.Controllers
 {

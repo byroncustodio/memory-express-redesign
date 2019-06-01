@@ -213,9 +213,22 @@
     <Content Include="Content\Images\Banner245-SystemConfigurator.svg" />
     <Content Include="Content\Images\Logitech-G502Lightspeed_Banner1020.jpg" />
     <Content Include="Content\Images\MESaskaton-NowOpen_Banner.png" />
+    <Content Include="Content\Images\MX-Icon-IPR.png" />
+    <Content Include="Content\Images\MX-Icon-TechZone.png" />
+    <Content Include="Content\Images\MX-Icon-Uber.png" />
     <Content Include="Content\Images\MX-Logo-NoText-Rectangular.png" />
     <Content Include="Content\Images\MX-Logo.png" />
     <Content Include="Content\Images\Nvidia-RTXFramesWinGames_Banner.jpg" />
+    <Content Include="Content\Images\Products\BDL_MM00001330-0.jpg" />
+    <Content Include="Content\Images\Products\BDL_MM00001380-0.jpg" />
+    <Content Include="Content\Images\Products\MX72839-0.jpg" />
+    <Content Include="Content\Images\Products\MX73472-0.jpg" />
+    <Content Include="Content\Images\Products\MX73914-0.jpg" />
+    <Content Include="Content\Images\Products\MX74178-0.jpg" />
+    <Content Include="Content\Images\Products\MX75686-0.jpg" />
+    <Content Include="Content\Images\Products\MX75991-0.jpg" />
+    <Content Include="Content\Images\Products\MX76342-0.jpg" />
+    <Content Include="Content\Images\Products\MX76396-0.jpg" />
     <Content Include="Content\site.css">
       <DependentUpon>site.scss</DependentUpon>
     </Content>

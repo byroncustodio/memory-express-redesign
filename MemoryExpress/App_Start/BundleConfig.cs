@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace MemoryExpress
+namespace MemoryExpress.Web
 {
     public class BundleConfig
     {

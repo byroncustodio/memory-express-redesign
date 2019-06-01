@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using MemoryExpress.Models;
+using MemoryExpress.Web.Models;
 
-namespace MemoryExpress
+namespace MemoryExpress.Web
 {
     public partial class Startup
     {

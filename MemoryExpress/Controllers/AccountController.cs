@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using MemoryExpress.Models;
+using MemoryExpress.Web.Models;
 
-namespace MemoryExpress.Controllers
+namespace MemoryExpress.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
