@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryExpress.Web", "MemoryExpress\MemoryExpress.Web.csproj", "{4C4AB0A0-91A1-4DA3-82CB-99EF646B93E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryExpress.Web", "MemoryExpress.Web\MemoryExpress.Web.csproj", "{4C4AB0A0-91A1-4DA3-82CB-99EF646B93E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryExpress.Tests", "MemoryExpress.Tests\MemoryExpress.Tests.csproj", "{9DE11384-28AF-42D5-96CC-3CBFF151455F}"
 EndProject
