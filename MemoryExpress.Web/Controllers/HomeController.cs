@@ -52,21 +52,35 @@ namespace MemoryExpress.Web.Controllers
                 .Where(x => x.Published == true);
             var productList = new List<ProductModel>();
 
-            foreach (var product in productEntities)
+            foreach (var productEntity in productEntities)
             {
-                var productModel = _mapper.Map<Product, ProductModel>(product);
+                var productModel = _mapper.Map<Product, ProductModel>(productEntity);
 
                 // get main image
-                if (product.Images.Count() > 0)
+                if (productEntity.Images.Count() > 0)
                 {
-                    productModel.MainImage = product.Images
+                    productModel.MainImage = productEntity.Images
                         .OrderBy(x => x.SortOrder)
                         .FirstOrDefault()
                         .Image
                         .FileName;
                 }
 
-                // check for discount
+                // check for deal
+                if (productEntity.Deals.Count() > 0)
+                {
+                    productModel.Deals = new List<DealModel>();
+
+                    foreach (var dealEntity in productEntity.Deals.Select(x => x.Deal))
+                    {
+                        productModel.Deals.Add(_mapper.Map<Deal, DealModel>(dealEntity));
+                    }
+
+                    productModel.DealPrice = productEntity.Deals
+                        .Where(x => x.Deal.DealType == DealTypes.Single)
+                        .FirstOrDefault()
+                        .Price;
+                }
 
                 // get product rating
 

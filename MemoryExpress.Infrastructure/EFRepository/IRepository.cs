@@ -33,7 +33,7 @@ namespace MemoryExpress.Infrastructure.EFRepository
         /// </summary>
         /// <param name="id">Id of entity</param>
         /// <returns>Entity</returns>
-        TEntity FindById(Guid id);
+        TEntity FindById(int id);
 
         /// <summary>
         /// Insert Entity

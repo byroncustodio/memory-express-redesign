@@ -66,7 +66,7 @@ namespace MemoryExpress.Infrastructure.EFRepository
         /// </summary>
         /// <param name="id">Id of entity</param>
         /// <returns>Entity</returns>
-        public TEntity FindById(Guid id)
+        public TEntity FindById(int id)
         {
             throw new NotImplementedException();
         }

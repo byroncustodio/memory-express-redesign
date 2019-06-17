@@ -39,6 +39,7 @@ namespace MemoryExpress.Infrastructure.Services.Catalog
             // TODO: update when lazy loading is available
             var entities = _context.Products
                 .Include(x => x.Categories.Select(y => y.Category))
+                .Include(x => x.Deals.Select(y => y.Deal))
                 .Include(x => x.Images.Select(y => y.Image))
                 .Include(x => x.Manufacturers.Select(y => y.Manufacturer))
                 .Include(x => x.Specifications.Select(y => y.Specification))
@@ -59,6 +60,7 @@ namespace MemoryExpress.Infrastructure.Services.Catalog
             var entity = _context.Products
                 .Include(x => x.Categories.Select(y => y.Category))
                 .Include(x => x.Images.Select(y => y.Image))
+                .Include(x => x.Deals.Select(y => y.Deal))
                 .Include(x => x.Manufacturers.Select(y => y.Manufacturer))
                 .Include(x => x.Specifications.Select(y => y.Specification))
                 .AsNoTracking()
@@ -80,6 +82,7 @@ namespace MemoryExpress.Infrastructure.Services.Catalog
             // TODO: update when lazy loading is available
             var entity = _context.Products
                 .Include(x => x.Categories.Select(y => y.Category))
+                .Include(x => x.Deals.Select(y => y.Deal))
                 .Include(x => x.Images.Select(y => y.Image))
                 .Include(x => x.Manufacturers.Select(y => y.Manufacturer))
                 .Include(x => x.Specifications.Select(y => y.Specification))
@@ -140,10 +143,11 @@ namespace MemoryExpress.Infrastructure.Services.Catalog
         /// <param name="priceFilter">Price filter</param>
         /// <param name="isPublished">Published filter</param>
         /// <returns>List of product entities</returns>
-        public IList<Product> SearchProduct(string nameFilter = null, string seoFilter = null, string[] categoryFilter = null, string[] manufacturerFilter = null, string[] priceFilter = null, bool isPublished = true)
+        public IList<Product> SearchProduct(string nameFilter = null, string seoFilter = null, string[] categoryFilter = null, string[] dealFilter = null, string[] manufacturerFilter = null, string[] priceFilter = null, bool isPublished = true)
         {
             var result = _context.Products
                 .Include(x => x.Categories.Select(y => y.Category))
+                .Include(x => x.Deals.Select(y => y.Deal))
                 .Include(x => x.Images.Select(y => y.Image))
                 .Include(x => x.Manufacturers.Select(y => y.Manufacturer))
                 .Include(x => x.Specifications.Select(y => y.Specification))
@@ -173,6 +177,16 @@ namespace MemoryExpress.Infrastructure.Services.Catalog
                 result = result.Where(x => x
                     .Categories.Select(c => c.Category.Name.ToLower())
                     .Intersect(categoryFilter.Select(cf => cf.ToLower()))
+                    .Count() > 0
+                );
+            }
+
+            // deal filter
+            if (dealFilter != null && dealFilter.Length > 0)
+            {
+                result = result.Where(x => x
+                    .Deals.Select(d => d.Deal.Name.ToLower())
+                    .Intersect(dealFilter.Select(df => df.ToLower()))
                     .Count() > 0
                 );
             }

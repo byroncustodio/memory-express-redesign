@@ -68,6 +68,7 @@ namespace MemoryExpress.Web
 
             // Add DI for classes
             container.RegisterType(typeof(IRepository<>), typeof(Repository<>));
+            container.RegisterType<ICategoryService, CategoryService>();
             container.RegisterType<IProductService, ProductService>();
         }
     }

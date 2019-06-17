@@ -72,7 +72,7 @@ namespace MemoryExpress.Infrastructure.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         SKU = c.String(),
-                        ILC = c.Long(nullable: false),
+                        ILC = c.String(),
                         PartNumber = c.String(),
                         Name = c.String(),
                         Description = c.String(),

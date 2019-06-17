@@ -7,13 +7,13 @@ namespace MemoryExpress.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class AddedImagePropToProductDealTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedImagePropToProductDealTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906071002133_InitialCreate"; }
+            get { return "201906132025481_AddedImagePropToProductDealTable"; }
         }
         
         string IMigrationMetadata.Source

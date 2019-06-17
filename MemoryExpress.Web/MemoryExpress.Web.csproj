@@ -215,6 +215,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NavController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -222,6 +224,7 @@
     <Compile Include="Helpers\AutoMapperProfileConfiguration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\DealModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ManufacturerModel.cs" />
@@ -255,7 +258,14 @@
     <Content Include="Content\Images\Banner245-LastCall.svg" />
     <Content Include="Content\Images\Banner245-SystemConfigurator.svg" />
     <Content Include="Content\Images\Logitech-G502Lightspeed_Banner1020.jpg" />
+    <Content Include="Content\Images\Manufacturers\acer.png" />
+    <Content Include="Content\Images\Manufacturers\asus.png" />
+    <Content Include="Content\Images\Manufacturers\gigabyte.png" />
     <Content Include="Content\Images\Manufacturers\gskill.png" />
+    <Content Include="Content\Images\Manufacturers\intel.png" />
+    <Content Include="Content\Images\Manufacturers\lg.png" />
+    <Content Include="Content\Images\Manufacturers\mepc.png" />
+    <Content Include="Content\Images\Manufacturers\samsung.png" />
     <Content Include="Content\Images\MESaskaton-NowOpen_Banner.png" />
     <Content Include="Content\Images\MX-Icon-IPR.png" />
     <Content Include="Content\Images\MX-Icon-TechZone.png" />
@@ -265,15 +275,45 @@
     <Content Include="Content\Images\Nvidia-RTXFramesWinGames_Banner.jpg" />
     <Content Include="Content\Images\Products\BDL_MM00001330-0.jpg" />
     <Content Include="Content\Images\Products\BDL_MM00001380-0.jpg" />
+    <Content Include="Content\Images\Products\BDL_MM00001391-0.jpg" />
+    <Content Include="Content\Images\Products\MX59124-0.jpg" />
+    <Content Include="Content\Images\Products\MX61626-0.jpg" />
+    <Content Include="Content\Images\Products\MX63475-0.jpg" />
+    <Content Include="Content\Images\Products\MX64013-0.jpg" />
+    <Content Include="Content\Images\Products\MX68022-0.jpg" />
+    <Content Include="Content\Images\Products\MX69418-0.jpg" />
+    <Content Include="Content\Images\Products\MX70748-0.jpg" />
+    <Content Include="Content\Images\Products\MX71207-0.jpg" />
+    <Content Include="Content\Images\Products\MX71352-0.jpg" />
+    <Content Include="Content\Images\Products\MX71452-0.jpg" />
+    <Content Include="Content\Images\Products\MX71534-0.jpg" />
+    <Content Include="Content\Images\Products\MX71791-0.jpg" />
+    <Content Include="Content\Images\Products\MX72510-0.jpg" />
+    <Content Include="Content\Images\Products\MX72685-0.jpg" />
     <Content Include="Content\Images\Products\MX72839-0.jpg" />
+    <Content Include="Content\Images\Products\MX72909-0.jpg" />
+    <Content Include="Content\Images\Products\MX73457-0.jpg" />
     <Content Include="Content\Images\Products\MX73472-0.jpg" />
+    <Content Include="Content\Images\Products\MX73795-0.jpg" />
     <Content Include="Content\Images\Products\MX73914-0.jpg" />
+    <Content Include="Content\Images\Products\MX74164-0.jpg" />
     <Content Include="Content\Images\Products\MX74178-0.jpg" />
+    <Content Include="Content\Images\Products\MX74260-0.jpg" />
+    <Content Include="Content\Images\Products\MX75214-0.jpg" />
     <Content Include="Content\Images\Products\MX75587-0.jpg" />
     <Content Include="Content\Images\Products\MX75686-0.jpg" />
     <Content Include="Content\Images\Products\MX75991-0.jpg" />
     <Content Include="Content\Images\Products\MX76342-0.jpg" />
+    <Content Include="Content\Images\Products\MX76390-0.jpg" />
+    <Content Include="Content\Images\Products\MX76395-0.jpg" />
     <Content Include="Content\Images\Products\MX76396-0.jpg" />
+    <Content Include="Content\Images\Products\MX76406-0.jpg" />
+    <Content Include="Content\Images\Products\MX76455-0.jpg" />
+    <Content Include="Content\Images\Products\MX76457-0.jpg" />
+    <Content Include="Content\Images\Products\MX76460-0.jpg" />
+    <Content Include="Content\Images\Products\MX76708-0.jpg" />
+    <Content Include="Content\Images\Products\MX76730-0.jpg" />
+    <Content Include="Content\Images\Products\MX76885-0.jpg" />
     <Content Include="Content\site.css">
       <DependentUpon>site.scss</DependentUpon>
     </Content>
@@ -463,6 +503,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Nav.cshtml" />
+    <Content Include="Views\Home\_ProductDeals.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

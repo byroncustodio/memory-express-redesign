@@ -7,8 +7,8 @@ namespace MemoryExpress.Web.Models
 {
     public class SpecificationModel
     {
-        public string Key { get; set; }
-        public string Value { get; set; }
+        public string Name { get; set; }
         public int SortOrder { get; set; }
+        public string Value { get; set; }
     }
 }

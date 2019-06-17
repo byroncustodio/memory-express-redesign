@@ -83,17 +83,26 @@
     <Compile Include="ApplicationDbInitializer.cs" />
     <Compile Include="EFRepository\IRepository.cs" />
     <Compile Include="EFRepository\Repository.cs" />
-    <Compile Include="Migrations\201906071002133_InitialCreate.cs" />
-    <Compile Include="Migrations\201906071002133_InitialCreate.Designer.cs">
-      <DependentUpon>201906071002133_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201906081827437_InitialCreate.cs" />
+    <Compile Include="Migrations\201906081827437_InitialCreate.Designer.cs">
+      <DependentUpon>201906081827437_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906080455351_UpdateProductILCType.cs" />
-    <Compile Include="Migrations\201906080455351_UpdateProductILCType.Designer.cs">
-      <DependentUpon>201906080455351_UpdateProductILCType.cs</DependentUpon>
+    <Compile Include="Migrations\201906120503560_AddedDealTableAndMapping.cs" />
+    <Compile Include="Migrations\201906120503560_AddedDealTableAndMapping.Designer.cs">
+      <DependentUpon>201906120503560_AddedDealTableAndMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906122102432_UpdatedDealDateNamesAndAddedDealPrice.cs" />
+    <Compile Include="Migrations\201906122102432_UpdatedDealDateNamesAndAddedDealPrice.Designer.cs">
+      <DependentUpon>201906122102432_UpdatedDealDateNamesAndAddedDealPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906132025481_AddedImagePropToProductDealTable.cs" />
+    <Compile Include="Migrations\201906132025481_AddedImagePropToProductDealTable.Designer.cs">
+      <DependentUpon>201906132025481_AddedImagePropToProductDealTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Catalog\CategoryService.cs" />
+    <Compile Include="Services\Catalog\DealService.cs" />
     <Compile Include="Services\Catalog\ImageService.cs" />
     <Compile Include="Services\Catalog\ManufacturerService.cs" />
     <Compile Include="Services\Catalog\ProductService.cs" />
@@ -110,11 +119,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906071002133_InitialCreate.resx">
-      <DependentUpon>201906071002133_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906081827437_InitialCreate.resx">
+      <DependentUpon>201906081827437_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906080455351_UpdateProductILCType.resx">
-      <DependentUpon>201906080455351_UpdateProductILCType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906120503560_AddedDealTableAndMapping.resx">
+      <DependentUpon>201906120503560_AddedDealTableAndMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906122102432_UpdatedDealDateNamesAndAddedDealPrice.resx">
+      <DependentUpon>201906122102432_UpdatedDealDateNamesAndAddedDealPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906132025481_AddedImagePropToProductDealTable.resx">
+      <DependentUpon>201906132025481_AddedImagePropToProductDealTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

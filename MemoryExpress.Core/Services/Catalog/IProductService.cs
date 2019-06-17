@@ -52,11 +52,12 @@ namespace MemoryExpress.Core.Services.Catalog
         /// <param name="nameFilter">Name filter</param>
         /// <param name="seoFilter">SEO filter</param>
         /// <param name="categoryFilter">Category filter</param>
+        /// <param name="dealFilter">Deal filter</param>
         /// <param name="manufacturerFilter">Manufacturer filter</param>
         /// <param name="priceFilter">Price filter</param>
         /// <param name="isPublished">Published filter</param>
         /// <returns>List of product entities</returns>
-        IList<Product> SearchProduct(string nameFilter = null, string seoFilter = null, string[] categoryFilter = null, string[] manufacturerFilter = null, string[] priceFilter = null, bool isPublished = true);
+        IList<Product> SearchProduct(string nameFilter = null, string seoFilter = null, string[] categoryFilter = null, string[] dealFilter = null, string[] manufacturerFilter = null, string[] priceFilter = null, bool isPublished = true);
 
         IQueryable<Product> Table();
     }

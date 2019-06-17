@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MemoryExpress.Core.Domain.Catalog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -29,6 +30,12 @@ namespace MemoryExpress.Web.Models
 
         public decimal Price { get; set; }
 
+        public decimal DealPrice { get; set; }
+
+        public int StockQuantity { get; set; }
+
+        public int MaxCartQuantity { get; set; }
+
         public string MainImage { get; set; }
 
         public List<string> ProductImages { get; set; }
@@ -44,6 +51,8 @@ namespace MemoryExpress.Web.Models
         public DateTime DateAdded { get; set; }
 
         public List<CategoryModel> Categories { get; set; }
+
+        public List<DealModel> Deals { get; set; }
 
         public List<ManufacturerModel> Manufacturers { get; set; }
 

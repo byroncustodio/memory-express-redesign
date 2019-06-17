@@ -35,6 +35,7 @@ namespace MemoryExpress.Core.Domain.Catalog
         public DateTime DateModified { get; set; }
 
         public virtual ICollection<ProductCategoryMapping> Categories { get; set; }
+        public virtual ICollection<ProductDealMapping> Deals { get; set; }
         public virtual ICollection<ProductImageMapping> Images { get; set; }
         public virtual ICollection<ProductManufacturerMapping> Manufacturers { get; set; }
         public virtual ICollection<ProductSpecificationMapping> Specifications { get; set; }
