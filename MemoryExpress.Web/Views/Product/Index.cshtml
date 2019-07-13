@@ -1,5 +1,12 @@
 ﻿@model ProductModel
+@using System.IO
 @{ 
     ViewBag.Title = Model.Manufacturers.FirstOrDefault().Name + " " + (Model.MetaTitle ?? Model.Name) + " - Memory Express Inc.";
 }
 
+<section class="product-images container-fluid">
+    <img class="" src="@Model.ProductImages.FirstOrDefault()" alt="@Path.GetFileNameWithoutExtension(Model.ProductImages.FirstOrDefault())" />
+    <div class="row">
+
+    </div>
+</section>

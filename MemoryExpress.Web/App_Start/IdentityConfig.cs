@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using MemoryExpress.Web.Models;
+using MemoryExpress.Infrastructure;
 
 namespace MemoryExpress.Web
 {

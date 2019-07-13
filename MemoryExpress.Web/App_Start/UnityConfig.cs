@@ -1,6 +1,7 @@
 using AutoMapper;
 using MemoryExpress.Core.Domain.Catalog;
 using MemoryExpress.Core.Services.Catalog;
+using MemoryExpress.Infrastructure;
 using MemoryExpress.Infrastructure.EFRepository;
 using MemoryExpress.Infrastructure.Services.Catalog;
 using MemoryExpress.Web.Controllers;

@@ -1,6 +1,8 @@
 namespace MemoryExpress.Infrastructure.Migrations
 {
     using MemoryExpress.Core.Domain.Catalog;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -14,12 +16,66 @@ namespace MemoryExpress.Infrastructure.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(MemoryExpress.Infrastructure.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
+            // seed AspNetRoles
+            var roles = new List<string> { "Admin", "User" };
+
+            roles.ForEach(s => context.Roles.AddOrUpdate(r => r.Name, new IdentityRole(s)));
+            context.SaveChanges();
+
+            // seed default User in AspNetUsers
+            if (!context.Users.Any(u => u.Email == "user@memxpress.com"))
+            {
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+                var user = new ApplicationUser
+                {
+                    FirstName = "User",
+                    LastName = "Account",
+                    Email = "user@memxpress.com",
+                    UserName = "user@memxpress.com",
+                    PhoneNumber = null,
+                    EmailConfirmed = false,
+                    PhoneNumberConfirmed = false,
+                    SecurityStamp = Guid.NewGuid().ToString("D"),
+                    PasswordHash = userManager.PasswordHasher.HashPassword("user"),
+                    LockoutEnabled = false,
+                };
+                userManager.Create(user);
+                userManager.AddToRole(user.Id, "User");
+
+                context.SaveChanges();
+            }
+
+            // seed default Admin in AspNetUsers
+            if (!context.Users.Any(u => u.Email == "admin@memxpress.com"))
+            {
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+                var admin = new ApplicationUser
+                {
+                    FirstName = "Admin",
+                    LastName = "Account",
+                    Email = "admin@memxpress.com",
+                    UserName = "admin@memxpress.com",
+                    PhoneNumber = null,
+                    EmailConfirmed = false,
+                    PhoneNumberConfirmed = false,
+                    SecurityStamp = Guid.NewGuid().ToString("D"),
+                    PasswordHash = userManager.PasswordHasher.HashPassword("admin"),
+                    LockoutEnabled = false,
+                };
+                userManager.Create(admin);
+                userManager.AddToRole(admin.Id, "Admin");
+
+                context.SaveChanges();
+            }
 
             // seed Category
             var categories = new List<Category>
@@ -183,7 +239,7 @@ namespace MemoryExpress.Infrastructure.Migrations
             {
                 new Deal { Id = 1, Name = "Featured Deals", DealType = DealTypes.Single, Published = true, StartDealDate = DateTime.Now, EndDealDate = DateTime.Now.AddDays(7) },
                 new Deal { Id = 2, Name = "Laptops & PC Deals", DealType = DealTypes.Single, Published = true, StartDealDate = DateTime.Now, EndDealDate = DateTime.Now.AddDays(7) },
-                new Deal { Id = 3, Name = "Laptops & PC Deals", DealType = DealTypes.Single, Published = true, StartDealDate = DateTime.Now, EndDealDate = DateTime.Now.AddDays(7) },
+                new Deal { Id = 3, Name = "Component Deals", DealType = DealTypes.Single, Published = true, StartDealDate = DateTime.Now, EndDealDate = DateTime.Now.AddDays(7) },
             };
 
             deals.ForEach(s => context.Deals.AddOrUpdate(d => d.Id, s));
@@ -192,22 +248,25 @@ namespace MemoryExpress.Infrastructure.Migrations
             // seed Image
             var images = new List<Image>
             {
-                new Image { Id = 1, FileName = "/Content/Images/Products/BDL_MM00001330-0.jpg" },
-                new Image { Id = 2, FileName = "/Content/Images/Products/BDL_MM00001380-0.jpg" },
-                new Image { Id = 3, FileName = "/Content/Images/Products/BDL_MM00001391-0.jpg" },
-                new Image { Id = 4, FileName = "/Content/Images/Products/MX59124-0.jpg" },
-                new Image { Id = 5, FileName = "/Content/Images/Products/MX61626-0.jpg" },
-                new Image { Id = 6, FileName = "/Content/Images/Products/MX63475-0.jpg" },
-                new Image { Id = 7, FileName = "/Content/Images/Products/MX63475-0.jpg" },
-                new Image { Id = 8, FileName = "/Content/Images/Products/MX75587-0.jpg" },
-                new Image { Id = 9, FileName = "/Content/Images/Products/MX75686-0.jpg" },
-                new Image { Id = 10, FileName = "/Content/Images/Products/MX72510-0.jpg" },
-                new Image { Id = 11, FileName = "/Content/Images/Products/MX71352-0.jpg" },
-                new Image { Id = 12, FileName = "/Content/Images/Products/MX68022-0.jpg" },
-                new Image { Id = 13, FileName = "/Content/Images/Products/MX76730-0.jpg" },
-                new Image { Id = 14, FileName = "/Content/Images/Products/MX76395-0.jpg" },
-                new Image { Id = 15, FileName = "/Content/Images/Products/MX76460-0.jpg" },
-                new Image { Id = 16, FileName = "/Content/Images/Products/MX72839-0.jpg" },
+                new Image { Id = 1, FileName = "/Content/Images/Products/Default/BDL_MM00001330-0.jpg" },
+                new Image { Id = 2, FileName = "/Content/Images/Products/Default/BDL_MM00001380-0.jpg" },
+                new Image { Id = 3, FileName = "/Content/Images/Products/Default/BDL_MM00001391-0.jpg" },
+                new Image { Id = 4, FileName = "/Content/Images/Products/Default/MX59124-0.jpg" },
+                new Image { Id = 5, FileName = "/Content/Images/Products/Default/MX61626-0.jpg" },
+                new Image { Id = 6, FileName = "/Content/Images/Products/Default/MX63475-0.jpg" },
+                new Image { Id = 7, FileName = "/Content/Images/Products/Default/MX63475-0.jpg" },
+                new Image { Id = 8, FileName = "/Content/Images/Products/Default/MX75587-0.jpg" },
+                new Image { Id = 9, FileName = "/Content/Images/Products/Default/MX75686-0.jpg" },
+                new Image { Id = 10, FileName = "/Content/Images/Products/Default/MX72510-0.jpg" },
+                new Image { Id = 11, FileName = "/Content/Images/Products/Default/MX71352-0.jpg" },
+                new Image { Id = 12, FileName = "/Content/Images/Products/Default/MX68022-0.jpg" },
+                new Image { Id = 13, FileName = "/Content/Images/Products/Default/MX76730-0.jpg" },
+                new Image { Id = 14, FileName = "/Content/Images/Products/Default/MX76395-0.jpg" },
+                new Image { Id = 15, FileName = "/Content/Images/Products/Default/MX76460-0.jpg" },
+                new Image { Id = 16, FileName = "/Content/Images/Products/Default/MX72839-0.jpg" },
+                new Image { Id = 17, FileName = "/Content/Images/Products/Medium/MX72510-0.jpg" },
+                new Image { Id = 18, FileName = "/Content/Images/Products/Medium/MX72510-1.jpg" },
+                new Image { Id = 19, FileName = "/Content/Images/Products/Medium/MX72510-2.jpg" },
             };
 
             images.ForEach(s => context.Images.AddOrUpdate(p => p.Id, s));
@@ -344,7 +403,7 @@ namespace MemoryExpress.Infrastructure.Migrations
             {
                 new ProductDealMapping { ProductId = 1, DealId = 1, Price = 189.99m },
                 new ProductDealMapping { ProductId = 2, DealId = 2, Price = 739.99m },
-                new ProductDealMapping { ProductId = 3, DealId = 3, Price = 999.99m },
+                new ProductDealMapping { ProductId = 3, DealId = 2, Price = 999.99m },
             };
 
             foreach (ProductDealMapping pd in productDeals)
@@ -368,6 +427,9 @@ namespace MemoryExpress.Infrastructure.Migrations
                 new ProductImageMapping { ProductId = 1, ImageId = 8, SortOrder = 0 },
                 new ProductImageMapping { ProductId = 2, ImageId = 10, SortOrder = 0 },
                 new ProductImageMapping { ProductId = 3, ImageId = 16, SortOrder = 0 },
+                new ProductImageMapping { ProductId = 2, ImageId = 17, SortOrder = 0 },
+                new ProductImageMapping { ProductId = 2, ImageId = 18, SortOrder = 1 },
+                new ProductImageMapping { ProductId = 2, ImageId = 19, SortOrder = 2 },
             };
 
             foreach (ProductImageMapping pi in productImages)
@@ -430,7 +492,7 @@ namespace MemoryExpress.Infrastructure.Migrations
             foreach (ProductSpecificationMapping ps in productSpecifications)
             {
                 var productSpecificationInDatabase = context.ProductSpecificationMappings.Where(
-                    s => 
+                    s =>
                         s.Product.Id == ps.ProductId &&
                         s.Specification.Id == ps.SpecificationId
                 ).SingleOrDefault();

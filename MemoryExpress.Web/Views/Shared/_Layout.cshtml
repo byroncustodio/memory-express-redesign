@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/site")
+    @RenderSection("styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
     <script defer src="https://pro.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-RLPiEwcAdrH2NjFcwJipJtlFoIN1xvqPYeeDX5yYtSNu+HTIkQCDvPQ9thsUnPUS" crossorigin="anonymous"></script>
     <script type = 'text/javascript' >
@@ -46,9 +47,9 @@
 
     @Html.Action("Menu", "Nav")
 
-    <div class="body-content container-fluid p-0">
+    <div class="content">
 
-        <div class="body-content__dynamic container-fluid">
+        <div class="content-body container-fluid">
             @RenderBody()
         </div>
 

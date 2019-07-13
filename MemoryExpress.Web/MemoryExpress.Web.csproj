@@ -28,7 +28,8 @@
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
     <ApplicationInsightsResourceId>/subscriptions/691d5db2-947b-4c2e-b755-5cb4cc7babaf/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/MemoryExpress.Web</ApplicationInsightsResourceId>
-    <ApplicationInsightsAnnotationResourceId>/subscriptions/691d5db2-947b-4c2e-b755-5cb4cc7babaf/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/MemoryExpress.Web</ApplicationInsightsAnnotationResourceId>
+    <ApplicationInsightsAnnotationResourceId>
+    </ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,27 +52,6 @@
   <ItemGroup>
     <Reference Include="AutoMapper, Version=8.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.8.1.1\lib\net461\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.4.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.4.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.4.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.4.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.4.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.4.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -217,16 +197,16 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AutoMapperProfileConfiguration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Helpers\IdentityExtensions.cs" />
+    <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\DealModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModels\HomeViewModels.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\ManufacturerModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\SpecificationModel.cs" />
@@ -234,24 +214,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap\bootstrap-grid.css">
-      <DependentUpon>bootstrap-grid.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\bootstrap\bootstrap-grid.min.css">
-      <DependentUpon>bootstrap-grid.css</DependentUpon>
-    </Content>
-    <Content Include="Content\bootstrap\bootstrap-reboot.css">
-      <DependentUpon>bootstrap-reboot.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\bootstrap\bootstrap-reboot.min.css">
-      <DependentUpon>bootstrap-reboot.css</DependentUpon>
-    </Content>
-    <Content Include="Content\bootstrap\bootstrap.css">
-      <DependentUpon>bootstrap.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\bootstrap\bootstrap.min.css">
-      <DependentUpon>bootstrap.css</DependentUpon>
-    </Content>
     <Content Include="Content\Images\Asus-B450X470_Banner1020.jpg" />
     <Content Include="Content\Images\Banner245-Clearance.svg" />
     <Content Include="Content\Images\Banner245-FREEShipping.svg" />
@@ -273,47 +235,71 @@
     <Content Include="Content\Images\MX-Logo-NoText-Rectangular.png" />
     <Content Include="Content\Images\MX-Logo.png" />
     <Content Include="Content\Images\Nvidia-RTXFramesWinGames_Banner.jpg" />
-    <Content Include="Content\Images\Products\BDL_MM00001330-0.jpg" />
-    <Content Include="Content\Images\Products\BDL_MM00001380-0.jpg" />
-    <Content Include="Content\Images\Products\BDL_MM00001391-0.jpg" />
-    <Content Include="Content\Images\Products\MX59124-0.jpg" />
-    <Content Include="Content\Images\Products\MX61626-0.jpg" />
-    <Content Include="Content\Images\Products\MX63475-0.jpg" />
-    <Content Include="Content\Images\Products\MX64013-0.jpg" />
-    <Content Include="Content\Images\Products\MX68022-0.jpg" />
-    <Content Include="Content\Images\Products\MX69418-0.jpg" />
-    <Content Include="Content\Images\Products\MX70748-0.jpg" />
-    <Content Include="Content\Images\Products\MX71207-0.jpg" />
-    <Content Include="Content\Images\Products\MX71352-0.jpg" />
-    <Content Include="Content\Images\Products\MX71452-0.jpg" />
-    <Content Include="Content\Images\Products\MX71534-0.jpg" />
-    <Content Include="Content\Images\Products\MX71791-0.jpg" />
-    <Content Include="Content\Images\Products\MX72510-0.jpg" />
-    <Content Include="Content\Images\Products\MX72685-0.jpg" />
-    <Content Include="Content\Images\Products\MX72839-0.jpg" />
-    <Content Include="Content\Images\Products\MX72909-0.jpg" />
-    <Content Include="Content\Images\Products\MX73457-0.jpg" />
-    <Content Include="Content\Images\Products\MX73472-0.jpg" />
-    <Content Include="Content\Images\Products\MX73795-0.jpg" />
-    <Content Include="Content\Images\Products\MX73914-0.jpg" />
-    <Content Include="Content\Images\Products\MX74164-0.jpg" />
-    <Content Include="Content\Images\Products\MX74178-0.jpg" />
-    <Content Include="Content\Images\Products\MX74260-0.jpg" />
-    <Content Include="Content\Images\Products\MX75214-0.jpg" />
-    <Content Include="Content\Images\Products\MX75587-0.jpg" />
-    <Content Include="Content\Images\Products\MX75686-0.jpg" />
-    <Content Include="Content\Images\Products\MX75991-0.jpg" />
-    <Content Include="Content\Images\Products\MX76342-0.jpg" />
-    <Content Include="Content\Images\Products\MX76390-0.jpg" />
-    <Content Include="Content\Images\Products\MX76395-0.jpg" />
-    <Content Include="Content\Images\Products\MX76396-0.jpg" />
-    <Content Include="Content\Images\Products\MX76406-0.jpg" />
-    <Content Include="Content\Images\Products\MX76455-0.jpg" />
-    <Content Include="Content\Images\Products\MX76457-0.jpg" />
-    <Content Include="Content\Images\Products\MX76460-0.jpg" />
-    <Content Include="Content\Images\Products\MX76708-0.jpg" />
-    <Content Include="Content\Images\Products\MX76730-0.jpg" />
-    <Content Include="Content\Images\Products\MX76885-0.jpg" />
+    <Content Include="Content\Images\Products\Default\BDL_MM00001330-0.jpg" />
+    <Content Include="Content\Images\Products\Default\BDL_MM00001380-0.jpg" />
+    <Content Include="Content\Images\Products\Default\BDL_MM00001391-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX59124-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX61626-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX63475-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX64013-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX68022-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX69418-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX70748-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX71207-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX71352-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX71452-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX71534-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX71791-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX72510-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX72685-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX72839-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX72909-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX73457-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX73472-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX73795-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX73914-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX74164-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX74178-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX74260-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX75214-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX75587-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX75686-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX75991-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76342-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76390-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76395-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76396-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76406-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76455-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76457-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76460-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76708-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76730-0.jpg" />
+    <Content Include="Content\Images\Products\Default\MX76885-0.jpg" />
+    <Content Include="Content\Images\Products\Large\MX72510-0.jpg" />
+    <Content Include="Content\Images\Products\Large\MX72510-1.jpg" />
+    <Content Include="Content\Images\Products\Large\MX72510-2.jpg" />
+    <Content Include="Content\Images\Products\Medium\MX72510-0.jpg" />
+    <Content Include="Content\Images\Products\Medium\MX72510-1.jpg" />
+    <Content Include="Content\Images\Products\Medium\MX72510-2.jpg" />
+    <Content Include="Content\pages\home.css">
+      <DependentUpon>home.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\pages\home.min.css">
+      <DependentUpon>home.css</DependentUpon>
+    </Content>
+    <Content Include="Content\pages\register.css">
+      <DependentUpon>register.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\pages\register.min.css">
+      <DependentUpon>register.css</DependentUpon>
+    </Content>
+    <Content Include="Content\pages\sign-in.css">
+      <DependentUpon>sign-in.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\pages\sign-in.min.css">
+      <DependentUpon>sign-in.css</DependentUpon>
+    </Content>
     <Content Include="Content\site.css">
       <DependentUpon>site.scss</DependentUpon>
     </Content>
@@ -338,107 +324,119 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Content\bootstrap\_variables.scss" />
-    <Content Include="Content\bootstrap\_utilities.scss" />
-    <Content Include="Content\bootstrap\_type.scss" />
-    <Content Include="Content\bootstrap\_transitions.scss" />
-    <Content Include="Content\bootstrap\_tooltip.scss" />
-    <Content Include="Content\bootstrap\_toasts.scss" />
-    <Content Include="Content\bootstrap\_tables.scss" />
-    <Content Include="Content\bootstrap\_spinners.scss" />
-    <Content Include="Content\bootstrap\_root.scss" />
-    <Content Include="Content\bootstrap\_reboot.scss" />
-    <Content Include="Content\bootstrap\_progress.scss" />
-    <Content Include="Content\bootstrap\_print.scss" />
-    <Content Include="Content\bootstrap\_popover.scss" />
-    <Content Include="Content\bootstrap\_pagination.scss" />
-    <Content Include="Content\bootstrap\_navbar.scss" />
-    <Content Include="Content\bootstrap\_nav.scss" />
-    <Content Include="Content\bootstrap\_modal.scss" />
-    <Content Include="Content\bootstrap\_mixins.scss" />
-    <Content Include="Content\bootstrap\_media.scss" />
-    <Content Include="Content\bootstrap\_list-group.scss" />
-    <Content Include="Content\bootstrap\_jumbotron.scss" />
-    <Content Include="Content\bootstrap\_input-group.scss" />
-    <Content Include="Content\bootstrap\_images.scss" />
-    <Content Include="Content\bootstrap\_grid.scss" />
-    <Content Include="Content\bootstrap\_functions.scss" />
-    <Content Include="Content\bootstrap\_forms.scss" />
-    <Content Include="Content\bootstrap\_dropdown.scss" />
-    <Content Include="Content\bootstrap\_custom-forms.scss" />
-    <Content Include="Content\bootstrap\_code.scss" />
-    <Content Include="Content\bootstrap\_close.scss" />
-    <Content Include="Content\bootstrap\_carousel.scss" />
-    <Content Include="Content\bootstrap\_card.scss" />
-    <Content Include="Content\bootstrap\_buttons.scss" />
-    <Content Include="Content\bootstrap\_button-group.scss" />
-    <Content Include="Content\bootstrap\_breadcrumb.scss" />
-    <Content Include="Content\bootstrap\_badge.scss" />
-    <Content Include="Content\bootstrap\_alert.scss" />
-    <Content Include="Content\bootstrap\vendor\_rfs.scss" />
-    <Content Include="Content\bootstrap\utilities\_visibility.scss" />
-    <Content Include="Content\bootstrap\utilities\_text.scss" />
-    <Content Include="Content\bootstrap\utilities\_stretched-link.scss" />
-    <Content Include="Content\bootstrap\utilities\_spacing.scss" />
-    <Content Include="Content\bootstrap\utilities\_sizing.scss" />
-    <Content Include="Content\bootstrap\utilities\_shadows.scss" />
-    <Content Include="Content\bootstrap\utilities\_screenreaders.scss" />
-    <Content Include="Content\bootstrap\utilities\_position.scss" />
-    <Content Include="Content\bootstrap\utilities\_overflow.scss" />
-    <Content Include="Content\bootstrap\utilities\_float.scss" />
-    <Content Include="Content\bootstrap\utilities\_flex.scss" />
-    <Content Include="Content\bootstrap\utilities\_embed.scss" />
-    <Content Include="Content\bootstrap\utilities\_display.scss" />
-    <Content Include="Content\bootstrap\utilities\_clearfix.scss" />
-    <Content Include="Content\bootstrap\utilities\_borders.scss" />
-    <Content Include="Content\bootstrap\utilities\_background.scss" />
-    <Content Include="Content\bootstrap\utilities\_align.scss" />
-    <Content Include="Content\bootstrap\mixins\_visibility.scss" />
-    <Content Include="Content\bootstrap\mixins\_transition.scss" />
-    <Content Include="Content\bootstrap\mixins\_text-truncate.scss" />
-    <Content Include="Content\bootstrap\mixins\_text-hide.scss" />
-    <Content Include="Content\bootstrap\mixins\_text-emphasis.scss" />
-    <Content Include="Content\bootstrap\mixins\_table-row.scss" />
-    <Content Include="Content\bootstrap\mixins\_size.scss" />
-    <Content Include="Content\bootstrap\mixins\_screen-reader.scss" />
-    <Content Include="Content\bootstrap\mixins\_resize.scss" />
-    <Content Include="Content\bootstrap\mixins\_reset-text.scss" />
-    <Content Include="Content\bootstrap\mixins\_pagination.scss" />
-    <Content Include="Content\bootstrap\mixins\_nav-divider.scss" />
-    <Content Include="Content\bootstrap\mixins\_lists.scss" />
-    <Content Include="Content\bootstrap\mixins\_list-group.scss" />
-    <Content Include="Content\bootstrap\mixins\_image.scss" />
-    <Content Include="Content\bootstrap\mixins\_hover.scss" />
-    <Content Include="Content\bootstrap\mixins\_grid.scss" />
-    <Content Include="Content\bootstrap\mixins\_grid-framework.scss" />
-    <Content Include="Content\bootstrap\mixins\_gradients.scss" />
-    <Content Include="Content\bootstrap\mixins\_forms.scss" />
-    <Content Include="Content\bootstrap\mixins\_float.scss" />
-    <Content Include="Content\bootstrap\mixins\_deprecate.scss" />
-    <Content Include="Content\bootstrap\mixins\_clearfix.scss" />
-    <Content Include="Content\bootstrap\mixins\_caret.scss" />
-    <Content Include="Content\bootstrap\mixins\_buttons.scss" />
-    <Content Include="Content\bootstrap\mixins\_breakpoints.scss" />
-    <Content Include="Content\bootstrap\mixins\_box-shadow.scss" />
-    <Content Include="Content\bootstrap\mixins\_border-radius.scss" />
-    <Content Include="Content\bootstrap\mixins\_badge.scss" />
-    <Content Include="Content\bootstrap\mixins\_background-variant.scss" />
-    <Content Include="Content\bootstrap\mixins\_alert.scss" />
-    <Content Include="Content\bootstrap\bootstrap.scss" />
-    <Content Include="Content\bootstrap\bootstrap-reboot.scss" />
-    <Content Include="Content\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Content\vendors\bootstrap\_variables.scss" />
+    <Content Include="Content\vendors\bootstrap\_utilities.scss" />
+    <Content Include="Content\vendors\bootstrap\_type.scss" />
+    <Content Include="Content\vendors\bootstrap\_transitions.scss" />
+    <Content Include="Content\vendors\bootstrap\_tooltip.scss" />
+    <Content Include="Content\vendors\bootstrap\_toasts.scss" />
+    <Content Include="Content\vendors\bootstrap\_tables.scss" />
+    <Content Include="Content\vendors\bootstrap\_spinners.scss" />
+    <Content Include="Content\vendors\bootstrap\_root.scss" />
+    <Content Include="Content\vendors\bootstrap\_reboot.scss" />
+    <Content Include="Content\vendors\bootstrap\_progress.scss" />
+    <Content Include="Content\vendors\bootstrap\_print.scss" />
+    <Content Include="Content\vendors\bootstrap\_popover.scss" />
+    <Content Include="Content\vendors\bootstrap\_pagination.scss" />
+    <Content Include="Content\vendors\bootstrap\_navbar.scss" />
+    <Content Include="Content\vendors\bootstrap\_nav.scss" />
+    <Content Include="Content\vendors\bootstrap\_modal.scss" />
+    <Content Include="Content\vendors\bootstrap\_mixins.scss" />
+    <Content Include="Content\vendors\bootstrap\_media.scss" />
+    <Content Include="Content\vendors\bootstrap\_list-group.scss" />
+    <Content Include="Content\vendors\bootstrap\_jumbotron.scss" />
+    <Content Include="Content\vendors\bootstrap\_input-group.scss" />
+    <Content Include="Content\vendors\bootstrap\_images.scss" />
+    <Content Include="Content\vendors\bootstrap\_grid.scss" />
+    <Content Include="Content\vendors\bootstrap\_functions.scss" />
+    <Content Include="Content\vendors\bootstrap\_forms.scss" />
+    <Content Include="Content\vendors\bootstrap\_dropdown.scss" />
+    <Content Include="Content\vendors\bootstrap\_custom-forms.scss" />
+    <Content Include="Content\vendors\bootstrap\_code.scss" />
+    <Content Include="Content\vendors\bootstrap\_close.scss" />
+    <Content Include="Content\vendors\bootstrap\_carousel.scss" />
+    <Content Include="Content\vendors\bootstrap\_card.scss" />
+    <Content Include="Content\vendors\bootstrap\_buttons.scss" />
+    <Content Include="Content\vendors\bootstrap\_button-group.scss" />
+    <Content Include="Content\vendors\bootstrap\_breadcrumb.scss" />
+    <Content Include="Content\vendors\bootstrap\_badge.scss" />
+    <Content Include="Content\vendors\bootstrap\_alert.scss" />
+    <Content Include="Content\vendors\bootstrap\vendor\_rfs.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_visibility.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_text.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_stretched-link.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_spacing.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_sizing.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_shadows.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_position.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_overflow.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_float.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_flex.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_embed.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_display.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_borders.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_background.scss" />
+    <Content Include="Content\vendors\bootstrap\utilities\_align.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_visibility.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_transition.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_size.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_resize.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_lists.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_image.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_hover.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_grid.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_forms.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_float.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_caret.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_badge.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Content\vendors\bootstrap\mixins\_alert.scss" />
+    <Content Include="Content\vendors\bootstrap\bootstrap.scss" />
+    <Content Include="Content\vendors\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Content\vendors\bootstrap\bootstrap-grid.scss" />
     <Content Include="Content\site.scss" />
-    <Content Include="Content\_variables.scss" />
-    <Content Include="ApplicationInsights.config" />
+    <Content Include="Content\abstracts\_variables.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="Content\_fontawesome.scss" />
+    <Content Include="Content\vendors-extensions\_fontawesome.scss" />
     <Content Include="libman.json" />
     <Content Include="Connected Services\Application Insights\ConnectedService.json" />
-    <None Include="Properties\PublishProfiles\byroncustodio - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\byroncustodio - Web Deploy.pubxml" />
+    <Content Include="Content\vendors-extensions\_bootstrap.scss" />
+    <Content Include="Content\abstracts\_functions.scss" />
+    <Content Include="Content\abstracts\_mixins.scss" />
+    <Content Include="Content\base\_base.scss" />
+    <Content Include="Content\base\_reset.scss" />
+    <Content Include="Content\layout\_header.scss" />
+    <Content Include="Content\layout\_footer.scss" />
+    <Content Include="Content\layout\_navigation.scss" />
+    <Content Include="Content\components\_carousel.scss" />
+    <Content Include="Content\pages\home.scss" />
+    <Content Include="Content\pages\product.scss" />
+    <Content Include="Content\pages\sign-in.scss" />
+    <Content Include="Content\pages\register.scss" />
+    <None Include="Properties\PublishProfiles\memxpress - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\memxpress - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -510,6 +508,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\themes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

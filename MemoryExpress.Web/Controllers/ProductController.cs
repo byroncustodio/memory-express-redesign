@@ -63,6 +63,12 @@ namespace MemoryExpress.Web.Controllers
                     // get all images
                     if (productEntity.Images.Count() > 0)
                     {
+                        productModel.MainImage = productEntity.Images
+                            .OrderBy(x => x.SortOrder)
+                            .FirstOrDefault()
+                            .Image
+                            .FileName;
+
                         productModel.ProductImages = productEntity.Images.Select(x => x.Image.FileName).ToList();
                     }
 

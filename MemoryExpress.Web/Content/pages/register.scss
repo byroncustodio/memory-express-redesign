@@ -1,0 +1,44 @@
+﻿@import '../abstracts/variables';
+@import '../abstracts/functions';
+@import '../abstracts/mixins';
+
+@import '../vendors/bootstrap/functions';
+@import '../vendors/bootstrap/variables';
+@import '../vendors/bootstrap/mixins/breakpoints';
+
+.content-body {
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    & > section.register-form {
+        flex: 0 1 100%;
+
+        & [class*='col-'] {
+            padding: 0;
+        }
+    }
+
+    & .validation-summary {
+        & > ul {
+            padding-left: 20px;
+        }
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .content-body {
+        padding-top: 2em;
+        padding-bottom: 2em;
+
+        & > section.register-form {
+            flex-basis: 50%;
+        }
+
+        & .btn.btn-primary {
+            width: auto;
+        }
+    }
+}

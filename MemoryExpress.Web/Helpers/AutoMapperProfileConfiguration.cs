@@ -29,7 +29,8 @@ namespace MemoryExpress.Web.Helpers
                 .ForMember(dest => dest.Categories, opt => opt.Ignore())
                 .ForMember(dest => dest.Deals, opt => opt.Ignore())
                 .ForMember(dest => dest.Manufacturers, opt => opt.Ignore())
-                .ForMember(dest => dest.Specifications, opt => opt.Ignore());
+                .ForMember(dest => dest.Specifications, opt => opt.Ignore())
+                .ReverseMap();
         }
     }
 }

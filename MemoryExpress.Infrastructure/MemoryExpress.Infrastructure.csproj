@@ -80,24 +80,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="ApplicationDbInitializer.cs" />
     <Compile Include="EFRepository\IRepository.cs" />
     <Compile Include="EFRepository\Repository.cs" />
-    <Compile Include="Migrations\201906081827437_InitialCreate.cs" />
-    <Compile Include="Migrations\201906081827437_InitialCreate.Designer.cs">
-      <DependentUpon>201906081827437_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201907061647037_InitialCreate.cs" />
+    <Compile Include="Migrations\201907061647037_InitialCreate.Designer.cs">
+      <DependentUpon>201907061647037_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906120503560_AddedDealTableAndMapping.cs" />
-    <Compile Include="Migrations\201906120503560_AddedDealTableAndMapping.Designer.cs">
-      <DependentUpon>201906120503560_AddedDealTableAndMapping.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906122102432_UpdatedDealDateNamesAndAddedDealPrice.cs" />
-    <Compile Include="Migrations\201906122102432_UpdatedDealDateNamesAndAddedDealPrice.Designer.cs">
-      <DependentUpon>201906122102432_UpdatedDealDateNamesAndAddedDealPrice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906132025481_AddedImagePropToProductDealTable.cs" />
-    <Compile Include="Migrations\201906132025481_AddedImagePropToProductDealTable.Designer.cs">
-      <DependentUpon>201906132025481_AddedImagePropToProductDealTable.cs</DependentUpon>
+    <Compile Include="Migrations\201907130326437_UpdateDealTable.cs" />
+    <Compile Include="Migrations\201907130326437_UpdateDealTable.Designer.cs">
+      <DependentUpon>201907130326437_UpdateDealTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,17 +110,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906081827437_InitialCreate.resx">
-      <DependentUpon>201906081827437_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907061647037_InitialCreate.resx">
+      <DependentUpon>201907061647037_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906120503560_AddedDealTableAndMapping.resx">
-      <DependentUpon>201906120503560_AddedDealTableAndMapping.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906122102432_UpdatedDealDateNamesAndAddedDealPrice.resx">
-      <DependentUpon>201906122102432_UpdatedDealDateNamesAndAddedDealPrice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906132025481_AddedImagePropToProductDealTable.resx">
-      <DependentUpon>201906132025481_AddedImagePropToProductDealTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907130326437_UpdateDealTable.resx">
+      <DependentUpon>201907130326437_UpdateDealTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

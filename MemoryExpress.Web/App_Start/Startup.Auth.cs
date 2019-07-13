@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using MemoryExpress.Web.Models;
+using MemoryExpress.Infrastructure;
 
 namespace MemoryExpress.Web
 {

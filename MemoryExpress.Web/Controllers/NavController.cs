@@ -45,6 +45,9 @@ namespace MemoryExpress.Web.Controllers
                 categoryList.Add(categoryModel);
             }
 
+            ViewBag.ReturnUrl = this.Request.Url.AbsolutePath;
+            ViewData["UserInHomePage"] = this.Request.RequestContext.RouteData.Values["controller"].ToString() == "Home";
+
             return PartialView("~/Views/Shared/_Nav.cshtml", categoryList);
         }
 

@@ -2,6 +2,7 @@
 using MemoryExpress.Core.Domain.Catalog;
 using MemoryExpress.Core.Services.Catalog;
 using MemoryExpress.Web.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -48,8 +49,10 @@ namespace MemoryExpress.Web.Controllers
 
         public ActionResult Index()
         {
-            var productEntities = _productService.GetAllProducts()
-                .Where(x => x.Published == true);
+            var productEntities = _productService.SearchProduct(dealFilter: new string[] { "Featured Deals", "Laptops & PC Deals", "Component Deals" });
+
+            //var productEntities = _productService.GetAllProducts()
+            //    .Where(x => x.Published == true);
             var productList = new List<ProductModel>();
 
             foreach (var productEntity in productEntities)

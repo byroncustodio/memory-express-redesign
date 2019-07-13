@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MemoryExpress.Web.Models;
+using MemoryExpress.Web.ViewModels;
 
 namespace MemoryExpress.Web.Controllers
 {

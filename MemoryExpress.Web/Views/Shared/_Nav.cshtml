@@ -1,6 +1,9 @@
 ﻿@model List<CategoryModel>
+@{ 
+    var userInHomePage = (bool)ViewData["UserInHomePage"];
+}
 
-<div class="navigation container-fluid p-0 bg-me-black sticky-top">
+<div class="navigation container-fluid bg-me-black @(userInHomePage ? "sticky-top" : null)">
     <nav class="navbar navbar-dark navbar-expand-lg flex-wrap justify-content-lg-start pb-lg-3 pl-0 pr-0">
         <div class="row flex-grow-1 w-100 m-0 mb-lg-2">
             <div class="col-3 col-lg flex-lg-grow-0">
@@ -48,20 +51,31 @@
                 <div class="navigation__account container-fluid mb-3 p-0">
                     <div class="row justify-content-end">
                         <div class="col-9 text-right dropdown dropdown__account">
-                            <p>Welcome, @(User.Identity.IsAuthenticated ? User.Identity.Name : "Guest")!</p>
+                            <p>Welcome, @(User.Identity.IsAuthenticated ? User.Identity.GetFirstName() : "Guest")!</p>
                             <button class="dropdown-toggle" id="dropdownMenuAccount" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <big>My Account</big>
                             </button>
                             @if (User.Identity.IsAuthenticated)
                             {
+                            <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuAccount">
+                                <i class="fas fa-caret-up"></i>
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken();
 
+                                    <div class="form-group">
+                                        <input type="submit" value="Logout" class="btn btn-primary btn-block" />
+                                    </div>
+                                }
+
+                            </div>
                             }
                             else
                             {
                                 <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuAccount">
                                     <i class="fas fa-caret-up"></i>
-                                    <a href="#" class="btn btn-primary btn-block mb-3">Sign In</a>
-                                    <small class="d-block text-center">New Customer? <a href="#">Register Here</a></small>
+                                    @Html.ActionLink("Sign-In", "Login", "Account", new { returnUrl = ViewBag.ReturnUrl }, new { @class = "btn btn-primary btn-block mb-3" })
+                                    <small class="d-block text-center">New Customer? @Html.ActionLink("Register Here", "Register", "Account")</small>
                                 </div>
                             }
                         </div>
