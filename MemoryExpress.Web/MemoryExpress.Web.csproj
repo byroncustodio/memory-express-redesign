@@ -421,7 +421,6 @@
     </None>
     <Content Include="Content\vendors-extensions\_fontawesome.scss" />
     <Content Include="libman.json" />
-    <Content Include="Connected Services\Application Insights\ConnectedService.json" />
     <Content Include="Content\vendors-extensions\_bootstrap.scss" />
     <Content Include="Content\abstracts\_functions.scss" />
     <Content Include="Content\abstracts\_mixins.scss" />
