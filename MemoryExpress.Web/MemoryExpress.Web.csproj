@@ -434,8 +434,6 @@
     <Content Include="Content\pages\product.scss" />
     <Content Include="Content\pages\sign-in.scss" />
     <Content Include="Content\pages\register.scss" />
-    <None Include="Properties\PublishProfiles\memxpress - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\memxpress - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -508,6 +506,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\themes\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -13,7 +13,7 @@ namespace MemoryExpress.Infrastructure.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201907061647037_InitialCreate"; }
+            get { return "201907130734467_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

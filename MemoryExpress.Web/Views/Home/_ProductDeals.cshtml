@@ -1,17 +1,17 @@
-﻿@model IEnumerable<ProductModel>
+﻿@model HomeProductDealViewModel
 @using System.IO
 
 <section class="product-deals container-fluid mt-5 mb-5 p-0">
-    <h3 class="text-center text-lg-left">@ViewData["DealName"].ToString()</h3>
+    <h3 class="text-center text-lg-left">@Model.DealName</h3>
     <hr />
     <div class="row flex-row flex-nowrap align-items-stretch overflow-auto m-0 pb-3">
-        @for (int i = 0; i < Model.Count(); i++)
+        @for (int i = 0; i < Model.Products.Count(); i++)
         {
-            var product = Model.ElementAtOrDefault(i);
+            var product = Model.Products.ElementAtOrDefault(i);
 
             if (product != null)
             {
-                <div class="col-auto d-flex @(i == 0 ? "pl-0" : null) @(i == Model.Count() - 1 ? "pr-0" : null)">
+                <div class="col-auto d-flex @(i == 0 ? "pl-0" : null) @(i == Model.Products.Count() - 1 ? "pr-0" : null)">
                     <div class="card">
                         <div class="card-header text-center text-uppercase text-white bg-danger">
                             <h5>$@(product.Price - product.DealPrice) off</h5>

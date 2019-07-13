@@ -82,13 +82,9 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="EFRepository\IRepository.cs" />
     <Compile Include="EFRepository\Repository.cs" />
-    <Compile Include="Migrations\201907061647037_InitialCreate.cs" />
-    <Compile Include="Migrations\201907061647037_InitialCreate.Designer.cs">
-      <DependentUpon>201907061647037_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907130326437_UpdateDealTable.cs" />
-    <Compile Include="Migrations\201907130326437_UpdateDealTable.Designer.cs">
-      <DependentUpon>201907130326437_UpdateDealTable.cs</DependentUpon>
+    <Compile Include="Migrations\201907130734467_InitialCreate.cs" />
+    <Compile Include="Migrations\201907130734467_InitialCreate.Designer.cs">
+      <DependentUpon>201907130734467_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,11 +106,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907061647037_InitialCreate.resx">
-      <DependentUpon>201907061647037_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907130326437_UpdateDealTable.resx">
-      <DependentUpon>201907130326437_UpdateDealTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907130734467_InitialCreate.resx">
+      <DependentUpon>201907130734467_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

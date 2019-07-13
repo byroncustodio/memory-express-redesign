@@ -2,6 +2,7 @@
 using MemoryExpress.Core.Domain.Catalog;
 using MemoryExpress.Core.Services.Catalog;
 using MemoryExpress.Web.Models;
+using MemoryExpress.Web.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -49,11 +50,11 @@ namespace MemoryExpress.Web.Controllers
 
         public ActionResult Index()
         {
-            var productEntities = _productService.SearchProduct(dealFilter: new string[] { "Featured Deals", "Laptops & PC Deals", "Component Deals" });
-
-            //var productEntities = _productService.GetAllProducts()
-            //    .Where(x => x.Published == true);
-            var productList = new List<ProductModel>();
+            var currentDeals = new List<string> { "Featured Deals", "Laptops & PC Deals", "Component Deals" };
+            var productDeals = currentDeals
+                .Select(x => new HomeProductDealViewModel { DealName = x, Products = new List<ProductModel>() })
+                .ToList();
+            var productEntities = _productService.SearchProduct(dealFilter: currentDeals.ToArray());
 
             foreach (var productEntity in productEntities)
             {
@@ -74,9 +75,22 @@ namespace MemoryExpress.Web.Controllers
                 {
                     productModel.Deals = new List<DealModel>();
 
-                    foreach (var dealEntity in productEntity.Deals.Select(x => x.Deal))
+                    var dealsList = productEntity.Deals.Select(x => x.Deal);
+
+                    for (int i = 0; i < dealsList.Count(); i++)
                     {
-                        productModel.Deals.Add(_mapper.Map<Deal, DealModel>(dealEntity));
+                        var deal = dealsList.ElementAt(i);
+
+                        productModel.Deals.Add(_mapper.Map<Deal, DealModel>(deal));
+
+                        // add product to user-defined deals listed above
+                        foreach (var productDeal in productDeals)
+                        {
+                            if (productDeal.DealName == deal.Name)
+                            {
+                                productDeal.Products.Add(productModel);
+                            }
+                        }
                     }
 
                     productModel.DealPrice = productEntity.Deals
@@ -84,13 +98,14 @@ namespace MemoryExpress.Web.Controllers
                         .FirstOrDefault()
                         .Price;
                 }
-
-                // get product rating
-
-                productList.Add(productModel);
             }
 
-            return View(productList);
+            var model = new HomeIndexViewModel
+            {
+                ProductDeals = productDeals
+            };
+
+            return View(model);
         }
 
         public ActionResult About()

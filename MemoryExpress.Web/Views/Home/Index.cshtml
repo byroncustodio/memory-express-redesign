@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProductModel>
+﻿@model HomeIndexViewModel
 @{
     ViewBag.Title = "Memory Express Inc. - Computer Parts, Laptop Computers, & Electronics";
 }
@@ -59,11 +59,11 @@
     </div>
 </section>
 
-<!-- Site Featured Deals -->
-@Html.Partial("_ProductDeals", Model.Where(x => x.Deals.Where(y => y.Name == "Featured Deals").Count() > 0), new ViewDataDictionary { { "DealName", "Featured Deals" } })
-
-<!-- Site Laptops & PC Deals -->
-@Html.Partial("_ProductDeals", Model.Where(x => x.Deals.Where(y => y.Name == "Laptops & PC Deals").Count() > 0), new ViewDataDictionary { { "DealName", "Laptops & PC Deals" } })
+<!-- Product Deals -->
+@foreach (var productDeal in Model.ProductDeals.Where(x => x.Products.Count() > 0))
+{
+    @Html.Partial("_ProductDeals", productDeal)
+}
 
 <section class="services container-fluid mt-5 mb-5 p-0">
     <div class="row">
